@@ -27,6 +27,17 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('login', 'Auth\AuthController@getLogin');
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@getLogout');
+    Route::get('reset', 'Auth\AuthController@reset');
+});
+
+/**
+ * PASSWORD
+ */
+Route::group(['prefix' => 'password'], function () {
+    Route::get('email', 'Auth\PasswordController@getEmail');
+    Route::post('email', 'Auth\PasswordController@postEmail');
+    Route::get('reset/{token}', 'Auth\PasswordController@getReset');
+    Route::post('reset', 'Auth\PasswordController@postReset');
 });
 
 /**
@@ -47,16 +58,10 @@ Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles');
 /**
  * ADMIN ZONE
  */
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
-    Route::get('/', 'DashBoardController@index');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/', 'AdminController@index');
 
-    Route::group(['prefix' => 'api'], function() {
-        Route::get('payments', 'DashBoardController@payments');
+    Route::group(['prefix' => 'produjatia'], function() {
+        Route::get('payments', 'EventsController@index');
     });
-
-    Route::get('tlacit-uvodne-dokumenty/{claimID}', 'ClaimController@printFirstDocuments');
-    Route::get('tlacit-dokument/{documentID}', 'ClaimController@printDocument');
-
-    Route::post('vygenerovanie-vyzvy', 'ClaimController@vygenerovanie_vyzvy');
-    Route::get('resend-document/{id}', 'ClaimController@resend_document');
 });

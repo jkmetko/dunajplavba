@@ -91,6 +91,11 @@
                     <li class="">
                         <a href="{{ url('kontakt') }}">Kontakt</a>
                     </li>
+                    @if(\Illuminate\Support\Facades\Auth::user())
+                        <li class="">
+                            <a href="{{ url('admin') }}"><i class="glyphicon glyphicon-log-in"></i></a>
+                        </li>
+                    @endif
 
                 </ul>
             </div>

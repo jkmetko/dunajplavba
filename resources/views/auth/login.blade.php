@@ -1,4 +1,4 @@
-@extends('layouts.master-clean')
+@extends('layouts.master')
 
 @section('page_css')
     <!--Stylesheets-->
@@ -34,11 +34,6 @@
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-
-                <div class="row text-center" style="font-size: 18px">
-                    Prihlásenie do klientskej sekcie. Účet je automaticky vytvorený pri zadaní Vašej prvej pohľadávky.
-                    <a href="{{ url('zadanie-pohladavky/krok1') }}" class="colored">Zverte nám Vašu pohľadávku</a> a sledujte jej aktuálny stav on-line.
-                </div>
                 <hr>
 
                 @if(count($errors) > 0)
@@ -76,13 +71,10 @@
                         Password
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
-                    <div id="showHideBtnCss" class="form-group" style="position:absolute; right:16px; bottom:23%;">
-                        <img id="showHidePwdBtn" type="button" class="btn btn-danger" onclick="togglePassword()" src="{{ asset('assets/img/eye_closed.png')}}" title="Ukázať heslo" style="height: 41px;">
-                    </div>
 
                     <div class="form-group" style="font-size: 18px">
                         <input type="checkbox" name="remember"> Zamäpatať si prihlásenie
-                        <a href="#" id="modal-password-reset" class="pull-right colored">Zabudli ste heslo?</a>
+                        <a href="{{ url('password/email') }}" id="modal-password-reset" class="pull-right colored">Zabudli ste heslo?</a>
                     </div>
 
                     <div class="form-group" style="font-size: 18px">
