@@ -62,6 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'AdminController@index');
 
     Route::group(['prefix' => 'produjatia'], function() {
-        Route::get('payments', 'EventsController@index');
+        Route::get('/', 'EventsController@index');
+        Route::get('vytvorit', 'EventsController@create');
     });
 });

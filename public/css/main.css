@@ -376,6 +376,11 @@ background-color: #3266db;
 background-color: #fff;
 }
 
+.inputblock-header {
+width:100px;
+margin-left: -50px;
+background-color: #3266db;
+}
 /*** buttons ***/
 .theme_btn {
 font-size: 13px;
@@ -3678,4 +3683,36 @@ div.ppt{color:#fff;display:none;font-size:17px;z-index:9999;margin:0 0 5px 15px}
     max-height: 100%;
     max-width: 100%;
     width: auto;
-}​
+}
+
+.admin-icon{
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 4px;
+}
+
+.input{
+    background: none;
+    border: none;
+}
+
+.text-white{
+    color: #fff;
+}
+
+.text-bold{
+    font-weight: 700;
+}
+
+.input:focus{
+    background: none;
+    border: none;
+}
+
+.text-raleway{
+    font-family: 'Raleway', sans-serif;
+}
+
+.full-width{
+    width: 100%;
+}

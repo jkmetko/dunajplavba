@@ -22,6 +22,54 @@
 @endsection
 
 @section('content')
+    <section class="darkgrey_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <input type="text" name="name" class="block-header input text-center full-width text-white twxt-bold text-raleway underline" placeholder="Zadajte názov" required>
+                    <div class="inputblock-heder">asd</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="classes media light_section">
+                        <div class="fill pull-left">
+                            <a href="#">
+                                <img src="{{ asset('example/trainer-vertical2.jpg') }}" alt="image01" class="media-object fill">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h3><a href="class-single.html">Adam Mocko</a></h3>
+                            <div class="classes-description">
+                                <p>V dňoch 12-13.2.2016 sme sa zúčastnili Medzinárodného turnaja o Veľkú cenu Plzne.</p>
+                                <p>Pretekári ZK Dunajplavba Bratislava získala nasledovne umiestnenia:</p>
+                                <div class="col-md-6">
+                                    <h4>Starší žiaci:</h4>
+                                    <ul>
+                                        <li>54 kg Kevin Mikécz 2.miesto</li>
+                                        <li>63 kg Gerhardt Pohl 1.miesto.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Juniori:</h4>
+                                    <ul>
+                                        <li>85 kg Viliam Oross 2.miesto</li>
+                                        <li>85 kg Adam Štrba 3.miesto</li>
+                                        <li>85 kg Michal Pecha 5.miesto</li>
+                                        <li>85 kg Miroslav Lažo 6.miesto</li>
+                                        <li>120 kg Marek Zeman 3.miesto</li>
+                                    </ul>
+                                </div>
+                                {{--<p class="with-icon date">February 12, 2014</p>--}}
+                                {{--<p class="with-icon time">11:30 - 13:30</p>--}}
+                                {{--<p class="with-icon pin"><a href="trainer-single.html">Plzeň/CZE</a></p>--}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+    </section>
+
     <div class="container" style="margin-top: 100px;">
         <h1>Zadanie pohľadávky - Priloženie dokumentov</h1>
         <div class="row">
@@ -79,7 +127,7 @@
             url: baseUrl + "/dropzone/uploadFiles",
             params: {
                 _token: token,
-                'claimID': {{ $claim_id }},
+{{--                'claimID': {{ $claim_id }},--}}
                 claimer: 1
             }
         });
