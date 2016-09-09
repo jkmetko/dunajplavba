@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -20,18 +21,12 @@ class DropzoneController extends Controller
         $input = Input::all();
         $file = Request::file('file');
 
-        if(Storage::disk('claimer-documents')->put($claimID.'-'.$file->getClientOriginalName(),  File::get($file))){
+        if(Storage::disk('gallery')->put($eventID.'-'.$file->getClientOriginalName(),  File::get($file))){
             $entry = new Files();
             $entry->mime = $file->getClientMimeType();
-            $entry->original_name = $claimID.'-'.$file->getClientOriginalName();
+            $entry->original_name = $eventID.'-'.$file->getClientOriginalName();
             $entry->name = $file->getFilename();
-            $entry->event()->associate($event);
-
-            if(array_key_exists('claimer', $input) AND $input['claimer'] == 1){
-                $entry->user_id = $claim->claimer->id;
-            }else{
-                $entry->user_id = Auth::user()->id;
-            }
+            $entry->event()->associate(Event::find($eventID));
 
             if($entry->save()){
                 Log::error('UPLOAD SUCCESS: '.$claimID);

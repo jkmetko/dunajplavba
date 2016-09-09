@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('kontakt', function () {
+    return view('pages.contact');
+});
+
 Route::get('podujatia/{id}', function () {
     return view('pages.class-single');
 });
