@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Files;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Input;
-use Validator;
-use Request;
 use Response;
+use Request;
+use Validator;
 use Illuminate\Support\Facades\File;
 
 use App\Http\Requests;
@@ -19,6 +20,7 @@ class DropzoneController extends Controller
 {
     public function uploadFiles(Request $request) {
         $input = Input::all();
+        $eventID = $input['eventID'];
         $file = Request::file('file');
 
         if(Storage::disk('gallery')->put($eventID.'-'.$file->getClientOriginalName(),  File::get($file))){
@@ -26,17 +28,42 @@ class DropzoneController extends Controller
             $entry->mime = $file->getClientMimeType();
             $entry->original_name = $eventID.'-'.$file->getClientOriginalName();
             $entry->name = $file->getFilename();
-            $entry->event()->associate(Event::find($eventID));
+            $entry->event_id = $eventID;
 
             if($entry->save()){
-                Log::error('UPLOAD SUCCESS: '.$claimID);
+                Log::error('UPLOAD SUCCESS: '.$eventID);
                 return Response::json('success', 200);
             }else{
-                Log::error('UPLOAD ERROR: '.$claimID);
+                Log::error('UPLOAD ERROR: '.$eventID);
                 return Response::json('error', 400);
             }
         }else{
-            Log::error('FILES DB WRITE: '.$claimID);
+            Log::error('FILES DB WRITE: '.$eventID);
+            return Response::json('error', 400);
+        }
+    }
+    public function uploadCover(Request $request) {
+        $input = Input::all();
+        $eventID = $input['eventID'];
+        $file = Request::file('file');
+
+        if(Storage::disk('gallery')->put($eventID.'-'.$file->getClientOriginalName(),  File::get($file))){
+            $entry = new Files();
+            $entry->mime = $file->getClientMimeType();
+            $entry->original_name = $eventID.'-'.$file->getClientOriginalName();
+            $entry->name = $file->getFilename();
+            $entry->event_id = $eventID;
+            $entry->cover = true;
+
+            if($entry->save()){
+                Log::error('UPLOAD SUCCESS: '.$eventID);
+                return Response::json('success', 200);
+            }else{
+                Log::error('UPLOAD ERROR: '.$eventID);
+                return Response::json('error', 400);
+            }
+        }else{
+            Log::error('FILES DB WRITE: '.$eventID);
             return Response::json('error', 400);
         }
     }

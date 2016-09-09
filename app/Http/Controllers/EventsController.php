@@ -13,6 +13,7 @@ class EventsController extends Controller
     public function create(){
         $event = new Event;
         $event->user_id = Auth::user()->id;
+        $event->save();
         
         return view('events.create', [
             'event' => $event

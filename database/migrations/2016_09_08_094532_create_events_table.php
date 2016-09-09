@@ -21,6 +21,8 @@ class CreateEventsTable extends Migration
             $table->time('time_from');
             $table->time('time_to');
             $table->text('description');
+            $table->text('age_group');
+            $table->boolean('active')->default(0);
 
             $table->integer('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

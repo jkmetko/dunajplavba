@@ -33,9 +33,10 @@
                 <div class="col-sm-12">
                     <div class="classes media light_section">
                         <div class="fill pull-left">
-                            <a href="#">
+                            <input id="cover_photo" type="file" style="visibility:hidden" />
+                            <div onclick="$('#cover_photo').click();">
                                 <img src="{{ asset('img/upload_image.jpg') }}" alt="image01" class="media-object fill">
-                            </a>
+                            </div>
                         </div>
                         <div class="media-body">
                             <h3><a href="class-single.html">Informácie</a></h3>
@@ -108,5 +109,39 @@
     <script src="{{ asset('js/vendor/autogrow/autogrow.min.js') }}"></script>
     <script>
         $("#description").autogrow();
+
+        $("#cover_photo").change(function(){
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}'
+                },
+                xhr: function() {  // Custom XMLHttpRequest
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload){ // Check if upload property exists
+                        myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+                    }
+                    return myXhr;
+                },
+                url: '{{ url('dropzone/uploadCover') }}',
+                data: {
+                    'eventID': "{{ $event->id }}"
+                },
+                success: function (output) {
+//                    $.gritter.add({
+//                        title: "Obnovenie hesla",
+//                        text: "E-mail na obnovenie hesla bol odoslaný na adresu "+ email +"."
+//                    });
+                    console.log(output);
+                }
+            });
+        });
+
+        function progressHandlingFunction(e){
+            if(e.lengthComputable){
+                console.log('value: '+ e.loaded +'; total: '+e.total);
+            }
+        }
+
     </script>
 @endsection

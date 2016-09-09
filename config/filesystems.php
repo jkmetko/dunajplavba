@@ -54,6 +54,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'gallery' => [
+            "driver" => 'local',
+            "root" => storage_path() . "/gallery"
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',

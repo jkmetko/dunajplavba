@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
             $table->string('path');
             $table->string('mime');
             $table->string('original_name');
+            $table->boolean('cover')->default(0);
 
             $table->integer('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
