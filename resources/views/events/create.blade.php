@@ -35,7 +35,7 @@
                         <div class="fill pull-left">
                             <input id="cover_photo" type="file" style="visibility:hidden" />
                             <div onclick="$('#cover_photo').click();">
-                                <img src="{{ asset('img/upload_image.jpg') }}" alt="image01" class="media-object fill">
+                                <img src="{{ asset('img/upload_image.jpg') }}" id="cover_image" alt="image01" class="media-object fill">
                             </div>
                         </div>
                         <div class="media-body">
@@ -111,37 +111,29 @@
         $("#description").autogrow();
 
         $("#cover_photo").change(function(){
+            var file_data = $('#cover_photo').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+
             $.ajax({
-                type: "POST",
+                url: '{{ url('dropzone/uploadCover/'.$event->id ) }}',
                 headers: {
                     'X-CSRF-Token': '{{ csrf_token() }}'
                 },
-                xhr: function() {  // Custom XMLHttpRequest
-                    var myXhr = $.ajaxSettings.xhr();
-                    if(myXhr.upload){ // Check if upload property exists
-                        myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function(output){
+                    if(output.result == 'success'){
+                        $("#cover_image").attr('src', output.image_url);
+                    }else{
+                        alert('Obrázok sa nepodarilo nahrať. Akciu opakujte znovu, prosím.')
                     }
-                    return myXhr;
-                },
-                url: '{{ url('dropzone/uploadCover') }}',
-                data: {
-                    'eventID': "{{ $event->id }}"
-                },
-                success: function (output) {
-//                    $.gritter.add({
-//                        title: "Obnovenie hesla",
-//                        text: "E-mail na obnovenie hesla bol odoslaný na adresu "+ email +"."
-//                    });
-                    console.log(output);
                 }
             });
         });
-
-        function progressHandlingFunction(e){
-            if(e.lengthComputable){
-                console.log('value: '+ e.loaded +'; total: '+e.total);
-            }
-        }
-
     </script>
 @endsection

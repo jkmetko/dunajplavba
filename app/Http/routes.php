@@ -58,7 +58,7 @@ Route::group(['prefix' => 'password'], function () {
  * DROPZONE
  */
 Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles');
-Route::post('dropzone/uploadCover', 'DropzoneController@uploadCover');
+Route::post('dropzone/uploadCover/{eventID}', 'DropzoneController@uploadCover');
 
 /**
  * ADMIN ZONE

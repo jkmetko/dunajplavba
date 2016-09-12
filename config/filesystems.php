@@ -56,7 +56,7 @@ return [
 
         'gallery' => [
             "driver" => 'local',
-            "root" => storage_path() . "/gallery"
+            "root" => public_path() . "/gallery"
         ],
 
         's3' => [

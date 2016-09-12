@@ -42,9 +42,8 @@ class DropzoneController extends Controller
             return Response::json('error', 400);
         }
     }
-    public function uploadCover(Request $request) {
+    public function uploadCover(Request $request, $eventID) {
         $input = Input::all();
-        $eventID = $input['eventID'];
         $file = Request::file('file');
 
         if(Storage::disk('gallery')->put($eventID.'-'.$file->getClientOriginalName(),  File::get($file))){
@@ -57,14 +56,16 @@ class DropzoneController extends Controller
 
             if($entry->save()){
                 Log::error('UPLOAD SUCCESS: '.$eventID);
-                return Response::json('success', 200);
+                $url = asset('gallery/'.$entry->original_name);
+
+                return Response::json(['result' => 'success', 'image_url' => $url], 200);
             }else{
                 Log::error('UPLOAD ERROR: '.$eventID);
-                return Response::json('error', 400);
+                return Response::json(['result' => 'error'], 400);
             }
         }else{
             Log::error('FILES DB WRITE: '.$eventID);
-            return Response::json('error', 400);
+            return Response::json(['result' => 'error'], 400);
         }
     }
 }
