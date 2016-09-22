@@ -47,158 +47,172 @@
       <mandatory>1</mandatory>
       <data-type>text|0</data-type>
     </column>
-    <column id="20" parent="7" name="user_id">
+    <column id="20" parent="7" name="age_group">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="21" parent="7" name="active">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="22" parent="7" name="user_id">
       <data-type>int(10) unsigned|0</data-type>
     </column>
-    <column id="21" parent="7" name="deleted_at">
+    <column id="23" parent="7" name="deleted_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="22" parent="7" name="created_at">
+    <column id="24" parent="7" name="created_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="23" parent="7" name="updated_at">
+    <column id="25" parent="7" name="updated_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <index id="24" parent="7" name="events_user_id_foreign">
+    <index id="26" parent="7" name="events_user_id_foreign">
       <columns>user_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="25" parent="7" name="PRIMARY">
+    <key id="27" parent="7" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="26" parent="7" name="events_user_id_foreign">
+    <foreign-key id="28" parent="7" name="events_user_id_foreign">
       <columns>user_id</columns>
       <ref-key>~.users.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>delete</cascade-delete-rule>
     </foreign-key>
-    <column id="27" parent="8" name="id">
+    <column id="29" parent="8" name="id">
       <mandatory>1</mandatory>
       <data-type>int(10) unsigned|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="28" parent="8" name="name">
+    <column id="30" parent="8" name="name">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="29" parent="8" name="path">
+    <column id="31" parent="8" name="path">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="30" parent="8" name="mime">
+    <column id="32" parent="8" name="mime">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="31" parent="8" name="original_name">
+    <column id="33" parent="8" name="original_name">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="32" parent="8" name="event_id">
+    <column id="34" parent="8" name="cover">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="35" parent="8" name="event_id">
       <mandatory>1</mandatory>
       <data-type>int(10) unsigned|0</data-type>
     </column>
-    <column id="33" parent="8" name="user_id">
+    <column id="36" parent="8" name="user_id">
       <data-type>int(10) unsigned|0</data-type>
     </column>
-    <column id="34" parent="8" name="deleted_at">
+    <column id="37" parent="8" name="deleted_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="35" parent="8" name="created_at">
+    <column id="38" parent="8" name="created_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="36" parent="8" name="updated_at">
+    <column id="39" parent="8" name="updated_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <index id="37" parent="8" name="files_event_id_foreign">
+    <index id="40" parent="8" name="files_event_id_foreign">
       <columns>event_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="38" parent="8" name="files_user_id_foreign">
+    <index id="41" parent="8" name="files_user_id_foreign">
       <columns>user_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="39" parent="8" name="PRIMARY">
+    <key id="42" parent="8" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="40" parent="8" name="files_event_id_foreign">
+    <foreign-key id="43" parent="8" name="files_event_id_foreign">
       <columns>event_id</columns>
       <ref-key>~.events.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>delete</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="41" parent="8" name="files_user_id_foreign">
+    <foreign-key id="44" parent="8" name="files_user_id_foreign">
       <columns>user_id</columns>
       <ref-key>~.users.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>delete</cascade-delete-rule>
     </foreign-key>
-    <column id="42" parent="9" name="migration">
+    <column id="45" parent="9" name="migration">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="43" parent="9" name="batch">
+    <column id="46" parent="9" name="batch">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="44" parent="10" name="email">
+    <column id="47" parent="10" name="email">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="45" parent="10" name="token">
+    <column id="48" parent="10" name="token">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="46" parent="10" name="created_at">
+    <column id="49" parent="10" name="created_at">
       <mandatory>1</mandatory>
       <data-type>timestamp|0</data-type>
       <default-expression>CURRENT_TIMESTAMP</default-expression>
     </column>
-    <index id="47" parent="10" name="password_resets_email_index">
+    <index id="50" parent="10" name="password_resets_email_index">
       <columns>email</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="48" parent="10" name="password_resets_token_index">
+    <index id="51" parent="10" name="password_resets_token_index">
       <columns>token</columns>
       <desc-columns></desc-columns>
     </index>
-    <column id="49" parent="11" name="id">
+    <column id="52" parent="11" name="id">
       <mandatory>1</mandatory>
       <data-type>int(10) unsigned|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="50" parent="11" name="name">
+    <column id="53" parent="11" name="name">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="51" parent="11" name="email">
+    <column id="54" parent="11" name="email">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="52" parent="11" name="password">
+    <column id="55" parent="11" name="password">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="53" parent="11" name="remember_token">
+    <column id="56" parent="11" name="remember_token">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="54" parent="11" name="created_at">
+    <column id="57" parent="11" name="created_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="55" parent="11" name="updated_at">
+    <column id="58" parent="11" name="updated_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <index id="56" parent="11" name="users_email_unique">
+    <index id="59" parent="11" name="users_email_unique">
       <columns>email</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="57" parent="11" name="PRIMARY">
+    <key id="60" parent="11" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <key id="58" parent="11" name="users_email_unique">
+    <key id="61" parent="11" name="users_email_unique">
       <columns>email</columns>
       <underlying-index>users_email_unique</underlying-index>
     </key>

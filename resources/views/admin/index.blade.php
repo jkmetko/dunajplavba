@@ -15,7 +15,7 @@
                 <a href="#" class="col-md-3 col-lg-offset-3 admin-icon">
                     <i class="glyphicon glyphicon-calendar"></i>
                 </a>
-                <a href="{{ url('admin/produjatia/vytvorit') }}" class="col-md-3 admin-icon">
+                <a href="{{ url('admin/podujatia/vytvorit') }}" class="col-md-3 admin-icon">
                     <i class="glyphicon glyphicon-plus"></i>
                 </a>
             </div>

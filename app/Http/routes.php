@@ -19,11 +19,6 @@ Route::get('kontakt', function () {
     return view('pages.contact');
 });
 
-Route::get('podujatia/{id}', function () {
-    return view('pages.class-single');
-});
-
-
 /**
  * AUTH
  */
@@ -66,8 +61,14 @@ Route::post('dropzone/uploadCover/{eventID}', 'DropzoneController@uploadCover');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'AdminController@index');
 
-    Route::group(['prefix' => 'produjatia'], function() {
+    Route::group(['prefix' => 'podujatia'], function() {
         Route::get('/', 'EventsController@index');
         Route::get('vytvorit', 'EventsController@create');
+        Route::post('update', 'EventsController@update');
+        Route::get('upravit/{id}', 'EventsController@edit');
     });
+});
+
+Route::get('podujatia/{id}', function () {
+    return view('pages.class-single');
 });

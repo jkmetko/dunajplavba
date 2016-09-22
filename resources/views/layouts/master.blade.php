@@ -34,7 +34,7 @@
 
         <script src="{{ asset('js/vendor/jquery-1.11.0.min.js') }}"></script>
         <script src="{{ asset('js/vendor/jquery-migrate-1.2.1.min.js') }}"></script>
-        <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/vendor/placeholdem.min.js') }}"></script>
         <script src="{{ asset('js/vendor/hoverIntent.js') }}"></script>
         <script src="{{ asset('js/vendor/superfish.js') }}"></script>
