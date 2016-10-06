@@ -35,7 +35,11 @@
                     <div class="row">
                        @foreach(\App\Event::where('active', 1)->get() as $event)
                             <div class="col-md-3">
-                                <a href="{{ url('admin/podujatia/upravit/'.$event->id) }}"><img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="Owl Image"></a>
+                                <a  href="{{ url('admin/podujatia/upravit/'.$event->id) }}">
+                                    <div class="event_photo" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
+                                        {{--<img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="Owl Image">--}}
+                                    </div>
+                                </a>
 
                                 <h3><a href="{{ url('podujatia/1') }}">{{ $event->name }}</a></h3>
                                 <div class="classes-description">

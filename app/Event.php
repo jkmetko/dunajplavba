@@ -22,6 +22,6 @@ class Event extends Model
     }
 
     public function cover(){
-        return $this->files()->where('cover', 1)->first();
+        return $this->files()->where('cover', 1)->get()->last();
     }
 }

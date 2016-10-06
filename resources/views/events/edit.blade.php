@@ -36,16 +36,20 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="classes media light_section">
-                            <div class="fill pull-left">
-                                <input id="cover_photo" type="file" style="visibility:hidden" />
-                                <div onclick="$('#cover_photo').click();">
-                                    <img src="{{ asset('gallery/'.$event->cover()->original_name) }}" id="cover_image" alt="image01" class="media-object fill">
-                                </div>
+                            <div class="col-md-5 no-padding" onclick="$('#cover_photo').click();">
+                                <a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover">
+                                    <div class="fill" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
+                                        {{--<a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover" data-title="{{ $event->name }}/{{ $event->state }} - {{ date('d. M Y', strtotime($event->date)) }}">--}}
+                                        {{--<img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="image01" class="">--}}
+                                        {{--</a>--}}
+                                    </div>
+                                </a>
                             </div>
-                            <div class="media-body">
+
+                            <div class="col-md-7 no-padding media-body">
                                 <h3><a href="class-single.html">Informácie</a></h3>
                                 <div class="classes-description no-padding">
-                                    <textarea name="description" id="description" style="width: 100%; height: 320px; margin: 0; border: none; padding: 30px" placeholder="Zadajte informácie o podujatí">@if(old('description')){{ old('decription') }}@else{{ $event->description }}@endif</textarea>
+                                    <textarea name="description" id="description" style="width: 100%; min-height: 320px; margin: 0; border: none; padding: 30px" placeholder="Zadajte informácie o podujatí">@if(old('description')){{ old('decription') }}@else{{ $event->description }}@endif</textarea>
                                 </div>
                             </div>
                         </div>
@@ -265,4 +269,19 @@
     </script>
 
     <script src="{{ asset('plugins/lightbox2/js/lightbox.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            var height = $('.light_section').height();
+            var fill = $('.fill');
+            var img = $('.fill img');
+
+            fill.css({ height: height });
+
+            $('.fill').find('img').each(function(){
+                var imgClass = (this.width/this.height > 1) ? 'wide' : 'tall';
+                $(this).addClass(imgClass);
+            })
+        });
+    </script>
 @endsection

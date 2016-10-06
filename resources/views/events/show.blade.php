@@ -26,23 +26,25 @@
                     <h2 class="block-header"><strong>{{ $event->name }}</strong> /{{ $event->state }}</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="classes media light_section">
-                        <div class="fill pull-left">
-                            <a href="#">
-                                <img src="{{ asset('example/trainer-vertical2.jpg') }}" alt="image01" class="media-object fill">
-                            </a>
+            <div class="row classes media light_section">
+                {{--<div class="col-md-5" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">--}}
+                <div class="col-md-5 no-padding">
+                    <a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover" data-title="{{ $event->name }}/{{ $event->state }} - {{ date('d. M Y', strtotime($event->date)) }}">
+                        <div class="fill" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
+                            {{--<a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover" data-title="{{ $event->name }}/{{ $event->state }} - {{ date('d. M Y', strtotime($event->date)) }}">--}}
+                                {{--<img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="image01" class="">--}}
+                            {{--</a>--}}
                         </div>
-                        <div class="media-body">
-                            <h3><a href="class-single.html">Informácie</a></h3>
-                            <div class="classes-description">
-                                {!! nl2br($event->description) !!}
-                            </div>
-                        </div>
+                    </a>
+                </div>
+                <div class="col-md-7 media-body no-padding">
+                    <h3><a href="class-single.html">Informácie</a></h3>
+                    <div class="classes-description">
+                        {!! nl2br($event->description) !!}
                     </div>
                 </div>
-            </div></div>
+            </div>
+        </div>
     </section>
 
     <section id="portfolio" class="darkgrey_section last_content_section">
@@ -142,4 +144,18 @@
 
 @section('js')
     <script src="{{ asset('plugins/lightbox2/js/lightbox.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            var height = $('.light_section').height();
+            var fill = $('.fill');
+            var img = $('.fill img');
+
+            fill.css({ height: height });
+
+            $('.fill').find('img').each(function(){
+                var imgClass = (this.width/this.height > 1) ? 'wide' : 'tall';
+                $(this).addClass(imgClass);
+            })
+        });
+    </script>
 @endsection
