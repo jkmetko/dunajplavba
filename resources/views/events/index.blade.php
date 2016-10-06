@@ -39,8 +39,8 @@
 
                                 <h3><a href="{{ url('podujatia/1') }}">{{ $event->name }}</a></h3>
                                 <div class="classes-description">
-                                    <p class="with-icon date">{{ $event->date }}</p>
-                                    <p class="with-icon time">{{ $event->from }} - {{ $event->to }}</p>
+                                    <p class="with-icon date">{{ date('d. M Y', strtotime($event->date)) }}</p>
+                                    <p class="with-icon time">{{ date('h:m', strtotime($event->time_from)) }} - {{ date('h:m', strtotime($event->time_to)) }}</p>
                                     <p class="with-icon pin"><a href="trainer-single.html">{{ $event->location }}/{{ $event->state }}</a></p>
                                 </div>
                             </div>

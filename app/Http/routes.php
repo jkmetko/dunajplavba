@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
 
 Route::get('kontakt', function () {
     return view('pages.contact');
@@ -66,9 +64,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::get('vytvorit', 'EventsController@create');
         Route::post('update', 'EventsController@update');
         Route::get('upravit/{id}', 'EventsController@edit');
+        Route::post('deletePhoto', 'EventsController@deletePhoto');
     });
 });
 
-Route::get('podujatia/{id}', function () {
-    return view('pages.class-single');
-});
+Route::get('podujatia/{id}', 'EventsController@show');

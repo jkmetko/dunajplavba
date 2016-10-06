@@ -20,6 +20,7 @@
         }
     </style>
     <link rel="stylesheet" href="{{ asset('js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/lightbox2/css/lightbox.min.css') }}">
 @endsection
 
 @section('content')
@@ -29,7 +30,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                        <input type="text" name="name" class="block-header input text-center full-width text-white twxt-bold text-raleway underline" placeholder="Zadajte názov" required>
+                        <input type="text" name="name" class="block-header input text-center full-width text-white twxt-bold text-raleway underline" value="@if(old('name')){{ old('name') }}@else{{ $event->name }}@endif" required>
                     </div>
                 </div>
                 <div class="row">
@@ -44,7 +45,7 @@
                             <div class="media-body">
                                 <h3><a href="class-single.html">Informácie</a></h3>
                                 <div class="classes-description no-padding">
-                                    <textarea name="description" id="description" style="width: 100%; height: 320px; margin: 0; border: none; padding: 30px" placeholder="Zadajte informácie o podujatí">{{ $event->description }}</textarea>
+                                    <textarea name="description" id="description" style="width: 100%; height: 320px; margin: 0; border: none; padding: 30px" placeholder="Zadajte informácie o podujatí">@if(old('description')){{ old('decription') }}@else{{ $event->description }}@endif</textarea>
                                 </div>
                             </div>
                         </div>
@@ -62,17 +63,28 @@
                 </div>
 
                 <div id="portfolio_wrapper" class="row">
-                    {{--<div class="text-center filters col-sm-12">--}}
-                    {{--<ul id="filtrable">--}}
-                    {{--<li><a class="selected" data-filter="*" href="#">All</a></li>--}}
-                    {{--<li><a data-filter=".graphicdesign" href="#" class="">Graphic Design</a></li>--}}
-                    {{--<li><a data-filter=".photography" href="#" class="">Photography</a></li>--}}
-                    {{--<li><a data-filter=".webdesign" href="#" class="">Web Design</a></li>--}}
-                    {{--</ul>--}}
-                    {{--<div class="clearfix"></div>--}}
-                    {{--</div>--}}
-
                     <div class="dropzone m-t-40" id="dropzoneFileUpload" style="z-index: 1"></div>
+                </div>
+
+                <hr>
+
+                <ul class="classes row filtrable clearfix isotope" id="portfolioContainer">
+                    @foreach($files as $file)
+                        <li class="item col-sm-6 col-md-3 isotope-item graphicdesign webdesign {{ $file->id }}">
+                            <a href="{{ url('gallery/'.$file->original_name) }}" data-lightbox="set">
+                                <img src="{{ asset('gallery/'.$file->original_name) }}" alt="">
+                            </a>
+                            <i class="glyphicon glyphicon-remove remove" data-fileID="{{ $file->id }}"></i>
+                        </li>
+                    @endforeach
+                </ul>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            {{ $files->fragment('dropzoneFileUpload')->links() }}
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -90,7 +102,7 @@
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="name">Názov podujatia</label>
                         <div class='input-group date' id='datetimepicker3'>
-                            <input type="text" id="name" class="form-control" placeholder="Zadajte názov podujatia" name="name" value="{{ if(!old('name')) }}">
+                            <input type="text" id="name" class="form-control" placeholder="Zadajte názov podujatia" name="name" value="@if(old('name')){{ old('name') }}@else{{ $event->name }}@endif">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
@@ -99,18 +111,18 @@
 
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="location">Lokalita</label>
-                        <input type="text" id="location" class="form-control" placeholder="Mesto" name="location" value="{{ old('location') }}" required>
+                        <input type="text" id="location" class="form-control" placeholder="Mesto" name="location" value="@if(old('location')){{ old('location') }}@else{{ $event->location }}@endif" required>
                     </div>
 
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="state">Štát</label>
-                        <input type="text" id="state" class="form-control" placeholder="Dvoj písmenný kód (Sk, CZ...)" name="state" value="{{ old('state') }}" required>
+                        <input type="text" id="state" class="form-control" placeholder="Dvoj písmenný kód (Sk, CZ...)" name="state" value="@if(old('state')){{ old('state') }}@else{{ $event->state }}@endif" required>
                     </div>
 
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="date">Dátum</label>
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type="text" id="date" class="form-control" placeholder="Vyberte dátum" name="date" value="{{ old('date') }}" required>
+                            <input type="text" id="date" class="form-control" placeholder="Vyberte dátum" name="date" value="@if(old('date')){{ old('date') }}@else{{ date('Y/m/d', strtotime($event->date)) }}@endif" required>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -120,7 +132,7 @@
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="time_from">Začiatok podujatia</label>
                         <div class='input-group date' id='datetimepicker2'>
-                            <input type="text" id="time_from" class="form-control" placeholder="Vyberte čas" name="time_from" value="{{ old('time_from') }}">
+                            <input type="text" id="time_from" class="form-control" placeholder="Vyberte čas" name="time_from" value="@if(old('time_from')){{ old('time_from') }}@else{{ $event->time_from }}@endif">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
@@ -130,7 +142,7 @@
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="time_to">Ukončenie podujatia</label>
                         <div class='input-group date' id='datetimepicker3'>
-                            <input type="text" id="time_to" class="form-control" placeholder="Vyberte čas" name="time_to" value="{{ old('time_to') }}">
+                            <input type="text" id="time_to" class="form-control" placeholder="Vyberte čas" name="time_to" value="@if(old('time_to')){{ old('time_to') }}@else{{ $event->time_to }}@endif">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
@@ -140,7 +152,7 @@
 
                 <div class="row">
                     <div class="form-group col-md-12 text-center">
-                        <input id="submit" type="submit" class="btn btn-success" value="Pridať podujatie">
+                        <input id="submit" type="submit" class="btn btn-success" value="Upraviť podujatie">
                     </div>
                 </div>
             </div>
@@ -217,14 +229,40 @@
     <script>
         $(function () {
             $('#time_from').datetimepicker({
-                format: 'LT'
+                format: 'hh:mm:ss'
             });
             $('#time_to').datetimepicker({
-                format: 'LT'
+                format: 'hh:mm:ss'
             });
             $('#date').datetimepicker({
-                format: 'LL'
+                format: 'YYYY/MM/DD'
             });
         });
     </script>
+
+    <script>
+        $(".remove").click(function(){
+            var fileID = $(this).attr('data-fileID');
+
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}'
+                },
+                url: '{{ url('admin/podujatia/deletePhoto') }}',
+                data: {
+                    'fileID': fileID
+                },
+                success: function (output) {
+                    if(output.result == 'success'){
+                        $("."+output.fileID).remove();
+                    }else{
+                        alert('Obrázok sa nepodarilo odstrániť. Akciu opakujte znovu, prosím.')
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script src="{{ asset('plugins/lightbox2/js/lightbox.min.js') }}"></script>
 @endsection

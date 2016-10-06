@@ -107,19 +107,19 @@ border-top: none;
 }
 
 .breadcrumb {background: transparent; padding: 0; margin-bottom: 0;}
-.pagination {margin:88px 0 -20px;} 
+/*.pagination {margin:88px 0 -20px;} */
 .pagination > li >  a {
-padding: 8px 15px;
-border:3px solid #3266db;
-background-color: transparent;
-margin-bottom: 10px;
-margin-right: 9px;
-display: inline-block;
-color: #fff;
--webkit-border-radius: 0px !important;
-border-radius: 0px !important;
-} 
-.pagination > li.active > a, .pagination > li > a:hover, .pagination > li.active > a:hover {background-color: #3266db; color:#fff; border-color:#3266db;} 
+/*padding: 8px 15px;*/
+/*border:3px solid #3266db;*/
+/*background-color: transparent;*/
+/*margin-bottom: 10px;*/
+/*margin-right: 9px;*/
+/*display: inline-block;*/
+/*color: #fff;*/
+/*-webkit-border-radius: 0px !important;*/
+/*border-radius: 0px !important;*/
+}
+.pagination > li.active > a, .pagination > li > a:hover, .pagination > li.active > a:hover {background-color: #3266db; color:#fff; border-color:#3266db;}
 .pagination > li.active > a {color:#fff;}
 .carousel-indicators {display: none;}
 .carousel-control {width:30px; text-shadow:none; opacity: 1;}
@@ -1356,6 +1356,16 @@ ul#portfolioContainer {
 padding: 0;
 margin: 0;
 list-style: none;
+}
+ul#portfolioContainer .remove{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    cursor: pointer;
+    color: red;
+}
+ul#portfolioContainer .remove:hover{
+    color: #fff;
 }
 #portfolio h4 {margin-top: 0;}
 #portfolio .isotope-item {

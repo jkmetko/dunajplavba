@@ -217,13 +217,13 @@
     <script>
         $(function () {
             $('#time_from').datetimepicker({
-                format: 'LT'
+                format: 'HH:MM:SS'
             });
             $('#time_to').datetimepicker({
-                format: 'LT'
+                format: 'HH:MM:SS'
             });
             $('#date').datetimepicker({
-                format: 'LL'
+                format: 'YYYY/MM/DD'
             });
         });
     </script>
