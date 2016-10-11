@@ -8,6 +8,6 @@
     @include('sections.events')
     @include('sections.classes')
 {{--    @include('sections.prices')--}}
-    @include('sections.partners')
+    {{--@include('sections.partners')--}}
 
 @endsection

@@ -88,16 +88,6 @@
 
                 <div id="portfolio_wrapper" class="row">
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
-                        <label for="name">Názov podujatia</label>
-                        <div class='input-group date' id='datetimepicker3'>
-                            <input type="text" id="name" class="form-control" placeholder="Zadajte názov podujatia" name="name" value="{{ old('name') }}">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-time"></span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="location">Lokalita</label>
                         <input type="text" id="location" class="form-control" placeholder="Mesto" name="location" value="{{ old('location') }}" required>
                     </div>
@@ -120,7 +110,7 @@
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="time_from">Začiatok podujatia</label>
                         <div class='input-group date' id='datetimepicker2'>
-                            <input type="text" id="time_from" class="form-control" placeholder="Vyberte čas" name="time_from" value="{{ old('time_from') }}">
+                            <input type="text" id="time_from" class="form-control" placeholder="Vyberte čas" name="time_from" value="{{ old('time_from') }}" required>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
@@ -130,16 +120,35 @@
                     <div class="form-group  col-md-4 col-sm-12 col-xs-12">
                         <label for="time_to">Ukončenie podujatia</label>
                         <div class='input-group date' id='datetimepicker3'>
-                            <input type="text" id="time_to" class="form-control" placeholder="Vyberte čas" name="time_to" value="{{ old('time_to') }}">
+                            <input type="text" id="time_to" class="form-control" placeholder="Vyberte čas" name="time_to" value="{{ old('time_to') }}" required>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
                         </div>
                     </div>
+
+                    <div class="form-group  col-md-4 col-sm-12 col-xs-12">
+                        <label for="name">Kto sa zúčastní</label>
+                        <select name="attendee_type_id" class="form-control" id="claimType" required>
+                            @if(old('attendee_type_id'))
+                                <option value="{{ old('attendee_type_id') }}" selected>{{ \App\AttendeeType::find(old('attendee_type_id'))->name }}</option>
+                            @else
+                                <option value="">Vyberte typ účasti</option>
+                            @endif
+
+                            @foreach($attendeeTypes as $attendeeType)
+                                <option value="{{ $attendeeType->id }}" data-name="{{ $attendeeType->role_name }}">{{ $attendeeType->role_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-md-12 text-center">
+                        <input type="checkbox" id="our_event" name="our_event" value="{{ old('our_event') }}">
+                        <span class="inline" for="our_event">Jedná sa o náše podujatie?</span>
+                        <br>
+                        <br>
                         <input id="submit" type="submit" class="btn btn-success" value="Pridať podujatie">
                     </div>
                 </div>
@@ -202,6 +211,7 @@
                 data: form_data,
                 type: 'post',
                 success: function(output){
+                    console.log(output);
                     if(output.result == 'success'){
                         $("#cover_image").attr('src', output.image_url);
                     }else{

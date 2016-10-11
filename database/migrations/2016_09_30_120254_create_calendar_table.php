@@ -12,7 +12,7 @@ class CreateCalendarTable extends Migration
      */
     public function up()
     {
-        //
+
     }
 
     /**
@@ -22,6 +22,5 @@ class CreateCalendarTable extends Migration
      */
     public function down()
     {
-        //
     }
 }

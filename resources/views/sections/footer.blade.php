@@ -38,13 +38,14 @@
             <div class="block subscribe col-md-3 col-sm-4">
                 <h3>Novinky E-mailom</h3>
                 <p>Prihláste sa na odber aktualít a noviniek</p>
-                <form id="signup" action="/" method="get" class="form-inline">
+                <div id="signup" class="form-inline">
                     <div class="form-group">
                         <input name="email" id="mailchimp_email" type="email" class="form-control" placeholder="Email">
                     </div>
-                    <button type="submit" class="theme_btn">OK!</button>
+                    <meta name="_token" content="{{ csrf_token() }}">
+                    <button type="submit" id="subscribe" class="theme_btn">OK!</button>
                     <div id="response"></div>
-                </form>
+                </div>
             </div>
 
         </div>

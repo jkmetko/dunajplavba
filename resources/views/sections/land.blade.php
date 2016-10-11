@@ -3,8 +3,8 @@
     <div id="slide1" class="land parallax shown">
 
         <div class="slide_description">
-            <h3>Vitajte na stránkach <span class="highlight">ZK Dunajplavba</span></h3>
-            <h2>Zápasnícky klub</h2>
+            <h3 style="color: #fff">Vitajte na stránkach <span class="highlight">ZK Dunajplavba</span></h3>
+            <h2 style="color: #fff">Zápasnícky klub</h2>
             <p><a href="#" class="theme_btn">O nás</a></p>
         </div>
 

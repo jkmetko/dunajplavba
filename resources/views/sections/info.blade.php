@@ -1,4 +1,4 @@
-<section id="info" class="dark_section bg_image">
+<section id="onas" class="dark_section bg_image">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -29,11 +29,12 @@
                     <br>
                     Tieto deti sa potom snažíme dostať na Športové Gymnázium na Ostredkoch, s ktorým ZK Dunajplavba spolupracuje od roku 1985. Tu už mládež trénuje pod dohľadom skúsených trénerov s najvyššími trénerskými triedami. Títo mladí športovci majú možnosť počas školy trénovať dva krát denne, nakoľko majú vyučovanie prispôsobené k tréningovému procesu.
                 </p>
-
-                <p class="text-center">
-                    <a href="#" class="theme_btn">Kde nás nájdete</a>
-                </p>
             </div>
         </div>
+        <diw class="row">
+            <diw class="col-md-12 text-center">
+                <a href="#events" class="theme_btn">Kde nás nájdete</a>
+            </diw>
+        </diw>
     </div>
 </section>

@@ -21,6 +21,10 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function attendants() {
+        return $this->belongsTo(AttendeeType::class, 'attendee_type_id');
+    }
+
     public function cover(){
         return $this->files()->where('cover', 1)->get()->last();
     }

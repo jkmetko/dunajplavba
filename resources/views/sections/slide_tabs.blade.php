@@ -16,7 +16,7 @@
                 <div class="tab-content">
                     <div id="1" class="tab-pane fade active in">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-8 col-sm-12">
 
                                 <h3>Aktuality</h3>
                                 <div id="carousel-news-gym" class="carousel slide" data-ride="carousel">
@@ -33,42 +33,56 @@
 
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
-                                        <div class="item active">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face1.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p>
-                                                        Ullamco laboris nialiquid exea commodi consat. Ut enim minim veniam norud exotation.
-                                                    </p>
+                                        @foreach($newsAdults as $key => $new)
+                                            <div class="item @if($key == 0) active @endif">
+                                                <div class="media">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object" src="{{ asset('gallery/'.$new->cover()->original_name) }}" alt="">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <p>
+                                                            {{ $new->description }}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face2.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p>
-                                                        Veniam norud exotation. Ut enim minim ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face3.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+                                        {{--<div class="item active">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face1.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<p>--}}
+                                                        {{--Ullamco laboris nialiquid exea commodi consat. Ut enim minim veniam norud exotation.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face2.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<p>--}}
+                                                        {{--Veniam norud exotation. Ut enim minim ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face3.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
 
                                     </div>
 
@@ -78,70 +92,70 @@
 
                             </div>
 
-                            <div class="col-md-4 col-sm-6">
+                            {{--<div class="col-md-4 col-sm-6">--}}
 
-                                <h3>Podujatia</h3>
-                                <div id="carousel-testimonials-gym" class="carousel slide" data-ride="carousel">
+                                {{--<h3>Podujatia</h3>--}}
+                                {{--<div id="carousel-testimonials-gym" class="carousel slide" data-ride="carousel">--}}
 
-                                    <!-- Controls -->
-                                    <div class="carousel-controls">
-                                        <a class="" href="#carousel-testimonials-gym" data-slide="prev">
-                                            <i class="arrow-icon-left-open-mini"></i>
-                                        </a>
-                                        <a class="" href="#carousel-testimonials-gym" data-slide="next">
-                                            <i class="arrow-icon-right-open-mini"></i>
-                                        </a>
-                                    </div>
+                                    {{--<!-- Controls -->--}}
+                                    {{--<div class="carousel-controls">--}}
+                                        {{--<a class="" href="#carousel-testimonials-gym" data-slide="prev">--}}
+                                            {{--<i class="arrow-icon-left-open-mini"></i>--}}
+                                        {{--</a>--}}
+                                        {{--<a class="" href="#carousel-testimonials-gym" data-slide="next">--}}
+                                            {{--<i class="arrow-icon-right-open-mini"></i>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
 
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face3.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Your Name</h4>
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face4.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4>
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face1.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4>
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    {{--<!-- Wrapper for slides -->--}}
+                                    {{--<div class="carousel-inner">--}}
+                                        {{--<div class="item active">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face3.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<h4 class="media-heading">Your Name</h4>--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face4.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<h4 class="media-heading">Media heading</h4>--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face1.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<h4 class="media-heading">Media heading</h4>--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
 
-                                    </div>
-
-
-                                </div> <!-- eof carousel -->
+                                    {{--</div>--}}
 
 
-                            </div>
+                                {{--</div> <!-- eof carousel -->--}}
+
+
+                            {{--</div>--}}
 
                             <div class="col-md-4 col-sm-12">
                                 <h3>Kontaktné informácie</h3>
@@ -163,7 +177,7 @@
                     <div id="2" class="tab-pane fade">
 
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-8">
 
                                 <h3>Aktuality</h3>
                                 <div id="carousel-news-outdoor" class="carousel slide" data-ride="carousel">
@@ -180,42 +194,21 @@
 
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
-                                        <div class="item active">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face6.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
+
+                                        @foreach($newsYouth as $key => $new)
+                                            <div class="item @if($key == 0) active @endif">
+                                                <div class="media">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object" src="{{ asset('gallery/'.$new->cover()->original_name) }}" alt="">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <p>
+                                                            {{ $new->description }}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face5.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face2.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
 
                                     </div>
                                 </div> <!-- eof carousel -->
@@ -223,68 +216,68 @@
 
                             </div>
 
-                            <div class="col-sm-4">
+                            {{--<div class="col-sm-8">--}}
 
-                                <h3>Podujatia</h3>
-                                <div id="carousel-testimonials-outdoor" class="carousel slide" data-ride="carousel">
+                                {{--<h3>Podujatia</h3>--}}
+                                {{--<div id="carousel-testimonials-outdoor" class="carousel slide" data-ride="carousel">--}}
 
-                                    <div class="carousel-controls">
-                                        <!-- Controls -->
-                                        <a class="" href="#carousel-testimonials-outdoor" data-slide="prev">
-                                            <i class="arrow-icon-left-open-mini"></i>
-                                        </a>
-                                        <a class="" href="#carousel-testimonials-outdoor" data-slide="next">
-                                            <i class="arrow-icon-right-open-mini"></i>
-                                        </a>
-                                    </div>
+                                    {{--<div class="carousel-controls">--}}
+                                        {{--<!-- Controls -->--}}
+                                        {{--<a class="" href="#carousel-testimonials-outdoor" data-slide="prev">--}}
+                                            {{--<i class="arrow-icon-left-open-mini"></i>--}}
+                                        {{--</a>--}}
+                                        {{--<a class="" href="#carousel-testimonials-outdoor" data-slide="next">--}}
+                                            {{--<i class="arrow-icon-right-open-mini"></i>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
 
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face4.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4>
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face5.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4>
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object" src="{{ asset('example/top-face6.jpg') }}" alt="">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4>
-                                                    <p>
-                                                        Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    {{--<!-- Wrapper for slides -->--}}
+                                    {{--<div class="carousel-inner">--}}
+                                        {{--<div class="item active">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face4.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<h4 class="media-heading">Media heading</h4>--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face5.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<h4 class="media-heading">Media heading</h4>--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="media">--}}
+                                                {{--<a class="pull-left" href="#">--}}
+                                                    {{--<img class="media-object" src="{{ asset('example/top-face6.jpg') }}" alt="">--}}
+                                                {{--</a>--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<h4 class="media-heading">Media heading</h4>--}}
+                                                    {{--<p>--}}
+                                                        {{--Ut enim minim veniam norud exotation ullamco laboris nialiquid exea commodi consat.--}}
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
 
-                                    </div>
-                                </div> <!-- eof carousel -->
+                                    {{--</div>--}}
+                                {{--</div> <!-- eof carousel -->--}}
 
 
-                            </div>
+                            {{--</div>--}}
 
                             <div class="col-sm-4">
                                 <h3>Kontaktné informácie</h3>

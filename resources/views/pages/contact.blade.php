@@ -6,7 +6,7 @@
                 <div class="block col-sm-12">
                     <ul class="breadcrumb">
                         <li><a href="./" class="pathway"><i class="rt-icon-home"></i></a></li>
-                        <li><span>Contact</span></li>
+                        <li><span>Kontakt</span></li>
                     </ul>
                 </div>
             </div></div>
@@ -20,35 +20,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h2 class="block-header"><strong>Contact</strong> Form</h2>
+                    <h2 class="block-header"><strong>Kontaktujte</strong> nás</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="contact-form">
-                    <form class="contact-form" method="post" action="/">
+                    <form class="contact-form" method="post" action="{{ url('contact_mail') }}">
                         <div class="col-sm-6">
                             <p class="contact-form-name">
-                                <label for="name">Name <span class="required">*</span></label>
-                                <input type="text" aria-required="true" size="30" value="" name="name" id="name" class="form-control" placeholder="Name">
+                                <label for="name">Meno <span class="required">*</span></label>
+                                <input type="text" aria-required="true" size="30" value="" name="name" id="name" class="form-control" placeholder="Meno">
                             </p>
                             <p class="contact-form-email">
-                                <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="Email">
+                                <label for="email">E-mail <span class="required">*</span></label>
+                                <input type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="E-mail">
                             </p>
                             <p class="contact-form-subject">
-                                <label for="subject">Subject <span class="required">*</span></label>
-                                <input type="text" aria-required="true" size="30" value="" name="subject" id="subject" class="form-control" placeholder="Subject">
+                                <label for="subject">Predmet správy <span class="required">*</span></label>
+                                <input type="text" aria-required="true" size="30" value="" name="subject" id="subject" class="form-control" placeholder="Predmet správy">
                             </p>
                         </div>
                         <div class="col-sm-6">
                             <p class="contact-form-message">
-                                <label for="message">Message</label>
-                                <textarea aria-required="true" rows="8" cols="45" name="message" id="message" class="form-control" placeholder="Message"></textarea>
+                                <label for="message">Správa</label>
+                                <textarea aria-required="true" rows="8" cols="45" name="message" id="message" class="form-control" placeholder="Správa"></textarea>
                             </p>
                         </div>
                         <div class="col-sm-12 text-center">
                             <p class="contact-form-submit text-center vertical-margin-40">
-                                <input type="submit" value="Send Message" id="contact_form_submit" name="contact_submit" class="theme_btn">
+                                <input type="submit" value="Odoslať správu" id="contact_form_submit" name="contact_submit" class="theme_btn">
                             </p>
                         </div>
                     </form>
@@ -61,14 +61,14 @@
 @section('js')
     <!-- Map Scripts -->
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHqNqhBXdxO0E8ACD8uzgvDLEzzWhtrA"></script>
     <script type="text/javascript">
         var lat;
         var lng;
         var map;
 
         //type your address after "address="
-        jQuery.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=london, baker street, 221b&sensor=false', function(data) {
+        jQuery.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=Bratislava, Horarska, 12a&sensor=false', function(data) {
             lat = data.results[0].geometry.location.lat;
             lng = data.results[0].geometry.location.lng;
         }).complete(function(){
@@ -104,7 +104,7 @@
             });
             marker.setTitle('Map title'.toString());
             //type your map title and description here
-            attachSecretMessage(marker, '<h3>Map title</h3>Map HTML description');
+            attachSecretMessage(marker, '<h3 style="color: #3266db">ZK Dunajplavba</h3>Horarska 12/A, 821 09 Bratislava');
         }
     </script>
 @endsection

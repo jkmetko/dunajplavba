@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/detska_pripravka', function(){
+    return view('detska_pripravka');
+});
+Route::post('odber_aktualit/prihlasenie', 'SubscriptionController@subscribe');
+Route::get('podujatia/nase_podujatia', 'EventsController@ourEvents');
+Route::get('podujatia/nas_plan', 'EventsController@ourPlan');
 
 Route::get('kontakt', function () {
     return view('pages.contact');

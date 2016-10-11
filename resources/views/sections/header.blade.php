@@ -16,13 +16,13 @@
                     </li>
 
                     <li class="dropdown">
-                    <a href="./classes.html">Podujatia</a>
+                    <a href="#">Podujatia</a>
                     <ul class="dropdown-menu">
                     <li class="">
-                    <a href="./classes.html">Náš plán</a>
+                    <a href="{{ url('podujatia/nas_plan') }}">Náš plán</a>
                     </li>
                     <li class="">
-                    <a href="./classes.html">Naše turnaje</a>
+                    <a href="{{ url('podujatia/nase_podujatia') }}">Naše turnaje</a>
                     </li>
                     <li class="">
                     <a href="http://www.zapasenie.sk/podujatia/2015-2/domace/" target="_blank">Slovenské turnaje</a>
@@ -34,7 +34,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('/#clenovia-klubu') }}">Detská prípravka</a>
+                        <a href="{{ url('detska_pripravka') }}">Detská prípravka</a>
                     </li>
                     <li>
                         <a href="{{ url('/#clenovia-klubu') }}">Členovia klubu</a>
@@ -85,9 +85,9 @@
 
                         {{--</ul>--}}
                     {{--</li>--}}
-                    <li>
-                        <a href="{{ url('/#onas') }}">Partneri</a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="{{ url('/#onas') }}">Partneri</a>--}}
+                    {{--</li>--}}
                     <li class="">
                         <a href="{{ url('kontakt') }}">Kontakt</a>
                     </li>

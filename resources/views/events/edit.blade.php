@@ -156,6 +156,10 @@
 
                 <div class="row">
                     <div class="form-group col-md-12 text-center">
+                        <input type="checkbox" id="our_event" name="our_event" value="{{ old('our_event') }}" >
+                        <span class="inline" for="our_event">Jedná sa o náše podujatie?</span>
+                        <br>
+                        <br>
                         <input id="submit" type="submit" class="btn btn-success" value="Upraviť podujatie">
                     </div>
                 </div>

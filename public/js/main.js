@@ -133,14 +133,6 @@ jQuery(document).ready(function() {
 			pager: false,
 		  	mode: 'fade'
 		});
-
-		jQuery('.vertical-slider').bxSlider({
-			mode: 'vertical',
-			//slideWidth: 300,
-			minSlides: 2,
-			slideMargin: 30,
-			pager: false
-		});
 	}
 
 	//single page localscroll and scrollspy
@@ -389,3 +381,32 @@ jQuery(window).scroll(function() {
 // 		$(this).addClass(imgClass);
 // 	})
 // })
+
+
+/*
+* MAIL CHIMP SUBSCRIPTION
+* */
+
+
+$('#subscribe').click(function(){
+	var email = $('#mailchimp_email').val();
+	var token = $('meta[name="_token"]').attr('content');
+
+	$.ajax({
+		type: "POST",
+		headers: {
+			'X-CSRF-Token': token
+		},
+		url: 'odber_aktualit/prihlasenie',
+		data: {
+		'email': email
+		},
+		success: function (output) {
+			if(output.result == 'success'){
+				alert('Boli ste úspešne prihláseny na odber aktualít.');
+			}else{
+				alert(output.message+' Akciu opakujte znovu, prosím.')
+			}
+		},
+	});
+});

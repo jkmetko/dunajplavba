@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\AttendeeType;
 use App\Event;
 use App\Files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Response;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 
@@ -21,9 +23,11 @@ class EventsController extends Controller
         $event = new Event;
         $event->user_id = Auth::user()->id;
         $event->save();
+        $attendeeTypes = AttendeeType::all();
         
         return view('events.create', [
-            'event' => $event
+            'event'         => $event,
+            'attendeeTypes' => $attendeeTypes
         ]);
     }
 
@@ -78,6 +82,22 @@ class EventsController extends Controller
         return view('events.show', [
             'event' => $event,
             'files' => $files
+        ]);
+    }
+
+    public function ourEvents(){
+        $ourEvents = Event::where('active', 1)->where('our_event', 1)->paginate(8);
+
+        return view('events.ourEvents', [
+            'ourEvents' => $ourEvents
+        ]);
+    }
+
+    public function ourPlan(){
+        $ourPlan = Event::where('active', 1)->where('date', '>=', Carbon::now())->paginate(8);
+
+        return view('events.ourPlan', [
+            'ourPlan' => $ourPlan
         ]);
     }
 }

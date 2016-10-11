@@ -23,9 +23,13 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->text('age_group');
             $table->boolean('active')->default(0);
+            $table->boolean('our_event')->default(0);
 
             $table->integer('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->integer('attendee_type_id')->nullable()->unsigned();
+            $table->foreign('attendee_type_id')->references('id')->on('attendee_types')->onDelete('cascade');
 
             $table->softDeletes();
             $table->timestamps();
@@ -39,6 +43,11 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropForeign('events_user_id_foreign');
+            $table->dropForeign('events_attendee_type_id_foreign');
+        });
+
         Schema::drop('events');
     }
 }
