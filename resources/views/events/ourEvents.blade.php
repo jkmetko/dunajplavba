@@ -33,8 +33,8 @@
             <div class="col-sm-12">
                 <div class="classes">
                     <div class="row">
-                       @foreach($ourEvents as $event)
-                            <div class="col-md-3">
+                       @foreach($ourEvents as $key => $event)
+                            <div class="col-md-3 event">
                                 <a  href="{{ url('admin/podujatia/upravit/'.$event->id) }}">
                                     <div class="event_photo" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
                                         {{--<img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="Owl Image">--}}
@@ -48,6 +48,9 @@
                                     <p class="with-icon pin"><a href="trainer-single.html">{{ $event->location }}/{{ $event->state }}</a></p>
                                 </div>
                             </div>
+                            @if($key % 3 == 0 AND $key > 0)
+                                <div class="clearfix visible-md-block"></div>
+                            @endif
                        @endforeach
                     </div>
                 </div>
