@@ -36,6 +36,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="classes media light_section">
+                            <input id="cover_photo" type="file" style="visibility:hidden" />
                             <div class="col-md-5 no-padding" onclick="$('#cover_photo').click();">
                                 <div class="fill" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
                                     {{--<a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover" data-title="{{ $event->name }}/{{ $event->state }} - {{ date('d. M Y', strtotime($event->date)) }}">--}}
