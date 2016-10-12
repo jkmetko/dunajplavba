@@ -37,13 +37,11 @@
                     <div class="col-sm-12">
                         <div class="classes media light_section">
                             <div class="col-md-5 no-padding" onclick="$('#cover_photo').click();">
-                                <a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover">
-                                    <div class="fill" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
-                                        {{--<a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover" data-title="{{ $event->name }}/{{ $event->state }} - {{ date('d. M Y', strtotime($event->date)) }}">--}}
-                                        {{--<img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="image01" class="">--}}
-                                        {{--</a>--}}
-                                    </div>
-                                </a>
+                                <div class="fill" style="background-image: url('{{ asset('gallery/'.$event->cover()->original_name) }}')">
+                                    {{--<a href="{{ asset('gallery/'.$event->cover()->original_name) }}" data-lightbox="cover" data-title="{{ $event->name }}/{{ $event->state }} - {{ date('d. M Y', strtotime($event->date)) }}">--}}
+                                    {{--<img src="{{ asset('gallery/'.$event->cover()->original_name) }}" alt="image01" class="">--}}
+                                    {{--</a>--}}
+                                </div>
                             </div>
 
                             <div class="col-md-7 no-padding media-body">
