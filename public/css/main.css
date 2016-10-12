@@ -3746,3 +3746,14 @@ div.ppt{color:#fff;display:none;font-size:17px;z-index:9999;margin:0 0 5px 15px}
     color: #fff;
     background-color: #3266db;
 }
+
+.removeEvent{
+    position: absolute;
+    top: 5px;
+    right: 18px;
+    color: red;
+}
+
+.removeEvent:hover{
+    color: #fff;
+}

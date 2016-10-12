@@ -58,6 +58,16 @@ class EventsController extends Controller
         }
     }
 
+    public function delete($id){
+        $event = Event::find($id);
+
+        if($event->delete()){
+            return redirect('admin/podujatia')->with([
+                "message" => 'Akcia bola úspešne odstránená.'
+            ])->withInput();
+        }
+    }
+
     public function deletePhoto(Request $request){
         $data = $request->all();
 

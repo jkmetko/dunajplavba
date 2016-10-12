@@ -71,6 +71,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('update', 'EventsController@update');
         Route::get('upravit/{id}', 'EventsController@edit');
         Route::post('deletePhoto', 'EventsController@deletePhoto');
+        Route::get('delete/{id}', 'EventsController@delete');
     });
 });
 
