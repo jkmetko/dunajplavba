@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use Artisan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,5 +26,10 @@ class WelcomeController extends Controller
             'newsAdults'      => $newsAdults,
             'newsYouth'      => $newsYouth
         ]);
+    }
+
+    public function artisan(){
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
     }
 }

@@ -75,3 +75,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 });
 
 Route::get('podujatia/{id}', 'EventsController@show');
+
+Route::get('artisan', 'WelcomeCOntroller@artisan');
