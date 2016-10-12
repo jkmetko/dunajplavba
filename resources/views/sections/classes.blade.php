@@ -310,6 +310,13 @@
     <script>
         $(document).ready(function(){;
             var mambersBtn = $('.mambersBtn');
+            var slider = {
+                'Senior': 0,
+                'Junior': 1,
+                'Kadet': 2,
+                'Tréner': 5
+            };
+
             vSlider = jQuery('.vertical-slider').bxSlider({
                 mode: 'vertical',
                 //slideWidth: 300,
@@ -320,13 +327,17 @@
 
             mambersBtn.click(function(){
                 var target = $(this).attr('data-target');
-                var category = $('.'+target).get(1);
-                var index = $('.slide').index(category);
+                $('.mambersBtn').not($(this)).addClass('collapsed');
+                $(this).removeClass('collapsed');
+//                var category = $('.'+target).eq(0);
+//                category.css('background', 'red');
+//                indexKadet = $('.vertical-slider > .slide').index(category);
+//                alert(indexKadet);
 
 //                $('.slide').not('.'+target).toggle(false);
 ////                $('.'+target).toggle(true);
 ////
-//               vSlider.goToSlide();
+               vSlider.goToSlide(slider[target]);
             });
         })
     </script>
