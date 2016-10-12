@@ -25,6 +25,7 @@
                         <li><a class="selected" data-filter="all" href="#">Všetky</a></li>
                         <li><a data-filter=".ŠH_Mladosť" href="#" class="">ŠH Mladosť</a></li>
                         <li><a data-filter=".ZŠ_Rajčianska" href="#" class="">ZŠ Rajčianska</a></li>
+                        <li><a data-filter=".ZŠ_Černyševského" href="#" class="">ZŠ Černyševského</a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -68,7 +69,30 @@
                                 </td>
                                 <td>
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
+                                <th>15:30 - 17:00</th>
+                                <td>
+                                    <a href="#" class="ZŠ_Černyševského">
+                                        ZŠ_Černyševského
+                                    </a>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <a href="#" class="ZŠ_Černyševského">
+                                        ZŠ_Černyševského
+                                    </a>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                            </tr>
+                            <tr>
                                 <th>15:00 - 16:00</th>
                                 <td>
                                     <a href="#" class="ZŠ_Rajčianska">
@@ -107,7 +131,7 @@
                     <h2 class="block-header"><strong>Miesta</strong> Tréningov</h2>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h3>ŠH Mladosť</h3>
                     <ul class="text-left">
                         <li>Trnavská cesta 39</li>
@@ -119,7 +143,7 @@
                     <section id="map" class="dark_section no-padding" style="height: 400px;"></section>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h3>ZŠ Rajčianska</h3>
                     <ul class="text-left">
                         <li>Rajčianska 3</li>
@@ -129,6 +153,18 @@
                         <li>Štvrtok 15:00 - 16:00</li>
                     </ul>
                     <section id="maptwo" class="dark_section no-padding" style="height: 400px;"></section>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>ZŠ Černyševského</h3>
+                    <ul class="text-left">
+                        <li>Černyševského 8</li>
+                        <li>851 01 Bratislava</li>
+                        <li>Tréner: Martin Bognár</li>
+                        <li>Pondelok 15:30 - 17:00</li>
+                        <li>Štvrtok 15:30 - 17:00</li>
+                    </ul>
+                    <section id="mapthree" class="dark_section no-padding" style="height: 400px;"></section>
                 </div>
             </div>
         </div>
@@ -157,6 +193,13 @@
             lng = data.results[0].geometry.location.lng;
         }).complete(function(){
             dxmapLoadMapTwo();
+        });
+
+        jQuery.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=Bratislava, Černiševského, 8a&sensor=false', function(data) {
+            lat = data.results[0].geometry.location.lat;
+            lng = data.results[0].geometry.location.lng;
+        }).complete(function(){
+            dxmapLoadMapThree();
         });
 
         function attachSecretMessage(marker, message)
@@ -211,6 +254,28 @@
             marker.setTitle('Map title'.toString());
             //type your map title and description here
             attachSecretMessage(marker, '<h3 style="color: #3266db">ZŠ Rajčianska</h3>Rajčianska 3, 821 07 Bratislava');
+        }
+
+        window.dxmapLoadMapThree = function()
+        {
+            var center = new google.maps.LatLng(lat, lng);
+            var settings = {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 16,
+                draggable: true,
+                scrollwheel: false,
+                center: center
+            };
+            map = new google.maps.Map(document.getElementById('mapthree'), settings);
+
+            var marker = new google.maps.Marker({
+                position: center,
+                title: 'Map title',
+                map: map
+            });
+            marker.setTitle('Map title'.toString());
+            //type your map title and description here
+            attachSecretMessage(marker, '<h3 style="color: #3266db">ZŠ Černyševského</h3>Černyševského 8, 851 01 Bratislava');
         }
     </script>
 @endsection
