@@ -2,44 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="owl-carousel partners">
+                <div class="owl-carousel partners text-center">
 
                     <div class="item">
-                        <img alt="" src="{{ asset('example/partner1.png') }}">
+                        <img alt="" src="{{ asset('partneri/ostredky.jpg') }}">
                     </div>
                     <div class="item">
-                        <img alt="" src="{{ asset('example/partner2.png') }}">
+                        <img alt="" src="{{ asset('partneri/spap.png') }}">
                     </div>
                     <div class="item">
-                        <img alt="" src="{{ asset('example/partner3.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner4.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner5.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner6.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner1.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner2.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner3.png') }}">
-                    </div>
-
-                    <div class="item">
-                        <img alt="" src="{{ asset('example/partner4.png') }}">
+                        <img alt="" src="{{ asset('partneri/3cky-soft.jpg') }}">
                     </div>
 
                 </div>
